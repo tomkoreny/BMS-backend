@@ -20,7 +20,8 @@
     "jwks-rsa": "^1.5.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.9.4"
+    "sequelize": "^5.9.4",
+    "typescript": "^3.5.2"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.27",
@@ -28,7 +29,6 @@
     "@types/jsonwebtoken": "^8.3.2",
     "@types/node": "^12.6.1",
     "@types/validator": "^10.11.1",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.2"
+    "ts-node": "^8.3.0"
   }
 }
