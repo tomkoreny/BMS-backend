@@ -34,7 +34,7 @@ const mapUser = user => {
 };
 
 export const UsersResolver =  async (root, args, context, info) => { 
-  const { body } = await context.authApi.sendGet('users');
+  const { body } = await context.authApi.get('users');
 
   let returnArray = [];
   if (typeof body == 'object') {

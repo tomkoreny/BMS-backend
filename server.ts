@@ -5,7 +5,8 @@ import * as flashheart from 'flashheart';
 import { ApolloServer } from 'apollo-server-express';
 import { AuthDirective } from './auth/authDirective';
 import { schema } from './schema'; 
-import {UsersResolver, UsersMutation} from './resolvers/users';
+import { UsersResolver, UsersMutation } from './resolvers/users';
+import { ManagementApi } from './helpers/managementApi';
 
 // LOAD ENV VARIABLES FROM .env FILE
 require("dotenv").config();
@@ -13,33 +14,14 @@ require("dotenv").config();
 const AUTH0_API_URL = process.env.AUTH0_URL + '/api/v2/';
 const AUTH0_TOKEN_URL = process.env.AUTH0_URL + '/oauth/token';
 
+const REST_CLIENT = flashheart.createClient();
 
-
-let rest: {client: flashheart.RestClient, options: any, managementApi: any};
-rest = {
-client : flashheart.createClient(),
-options: {},
-  managementApi: null,
-}
-
-class ManagementApi {
-  baseUri = AUTH0_API_URL;
-  rest = rest
-  async sendGet (url: string) {
-  return await rest.client.get(this.baseUri + url, this.rest.options); 
-  }
-  async patch (url: string, body: any) {
-  return await rest.client.patch(this.baseUri + url, body, this.rest.options); 
-  }
-  async post (url: string, body: any) {
-  return await rest.client.post(this.baseUri + url, body, this.rest.options); 
-  }
-}
+let auth0_api_client: ManagementApi;
 
 
 // GET AUTH0 management token
 // TODO: More elegant way to obtain token for auth0 management
-rest.client.post(AUTH0_TOKEN_URL,
+REST_CLIENT.post(AUTH0_TOKEN_URL,
   {
     "client_id": process.env.AUTH0_API_CLIENT_ID,
     "client_secret": process.env.AUTH0_API_CLIENT_SECRET,
@@ -48,16 +30,11 @@ rest.client.post(AUTH0_TOKEN_URL,
   } ,
   { headers: { 'content-type': 'application/json' } })
   .then(resp => {
-    rest.options = 
-      { headers: { authorization: 'Bearer ' + resp.body['access_token'] } };
-
-    rest.managementApi.rest.options = rest.options;
+    auth0_api_client = new ManagementApi(AUTH0_API_URL, REST_CLIENT, 
+      { headers: { authorization: 'Bearer ' + resp.body['access_token'] } } 
+    );
   })
   .catch( e => console.error(e) );
-
-
-rest.managementApi = new ManagementApi();
-
 
 const resolvers = {
   Query: {
@@ -78,7 +55,7 @@ const server = new ApolloServer({
   context: (req) => {
     return {
       user: req.req['user'],
-      authApi: rest.managementApi,
+      authApi: auth0_api_client,
     }
   }
 
@@ -116,4 +93,4 @@ if (process.env.SKIP_AUTH !== 'TRUE')
 server.applyMiddleware({ app });
 
 // Start the app
-app.listen(3001, () => console.log('API listening on 3001'));
+app.listen(process.env.PORT, () => console.log('API listening on 3001'));
