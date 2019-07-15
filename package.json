@@ -4,7 +4,8 @@
   "description": "Bussisness Management System",
   "main": "main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "start": "./node_modules/.bin/ts-node  server.ts"
   },
   "author": "Tomas Koreny",
   "license": "ISC",
