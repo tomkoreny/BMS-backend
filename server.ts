@@ -1,5 +1,5 @@
-import * as express from 'express';
-import * as jwt from 'express-jwt';
+import express from 'express';
+import jwt from 'express-jwt';
 import * as jwksRsa from 'jwks-rsa';
 import * as flashheart from 'flashheart';
 import { ApolloServer } from 'apollo-server-express';
