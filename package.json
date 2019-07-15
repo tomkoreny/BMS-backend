@@ -1,0 +1,33 @@
+{
+  "name": "bms-backend",
+  "version": "0.0.1",
+  "description": "Bussisness Management System",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tomas Koreny",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.6.7",
+    "apollo-server-express": "^2.6.7",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "graphql": "^14.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.5.1",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.9.4"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.27",
+    "@types/express-jwt": "^0.0.42",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/node": "^12.6.1",
+    "@types/validator": "^10.11.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
+  }
+}
