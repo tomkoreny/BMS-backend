@@ -1,0 +1,7 @@
+{
+   "cli": {
+      "entitiesDi&password=exampler": "entity",
+      "migrationsDir": "migration",
+      "subscribersDir": "subscriber"
+   }
+}

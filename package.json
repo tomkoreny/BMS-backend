@@ -20,9 +20,12 @@
     "graphql": "^14.4.2",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.5.1",
+    "nodemon": "^1.19.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.9.4"
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.9.4",
+    "typeorm": "^0.2.18"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.27",
@@ -30,7 +33,7 @@
     "@types/express-jwt": "^0.0.42",
     "@types/graphql": "^14.2.2",
     "@types/jsonwebtoken": "^8.3.2",
-    "@types/node": "^12.6.1",
+    "@types/node": "^12.6.8",
     "@types/validator": "^10.11.1",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.2"

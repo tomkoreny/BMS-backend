@@ -23,7 +23,7 @@ export class AuthDirective extends SchemaDirectiveVisitor {
       const field = fields[fieldName];
       const { resolve = defaultFieldResolver } = field;
       field.resolve = async function (...args) {
-        if (process.env.SKIP_AUTH !== 'TRUE')
+        if (process.env.SKIP_AUTH === 'TRUE')
           return resolve.apply(this, args);
         const requiredRole =
           field._requiredAuthRole ||

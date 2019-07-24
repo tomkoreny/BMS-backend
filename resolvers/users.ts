@@ -11,6 +11,7 @@ const mapUserJson = input => {
         "family_name": input.lastName,
         "nickname": input.userName,
         "password": input.password,
+        "blocked": input.blocked,
         "username": input.userName
       }};
 const mapUser = user => {
@@ -26,10 +27,10 @@ const mapUser = user => {
   lastLogin: user.last_login,
   lastIp: user.last_ip,
   loginCount: user.logins_count,
-  userdId: user.user_id,
   nickName: user.nickname,
   emailVerified: user.email_verified,
-  userId: user.id,
+  id: user.user_id,
+  blocked: !!user.blocked ? true : false,
   } 
 };
 
@@ -56,6 +57,7 @@ export const UsersMutation = (root, args, context, info) => {
       newUserJson.email_verified = !input.emailVerfied;
       newUserJson.name = newUserJson.given_name + ' ' + newUserJson.family_name;
       newUserJson.connection = "Username-Password-Authentication";
+      newUserJson.blocked = !!newUserJson.blocked ? true : false;
       const resp = await context.authApi.post('users', newUserJson);
       const user = resp.body;
       return mapUser(user); 

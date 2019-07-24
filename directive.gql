@@ -1,0 +1,1 @@
+directive @auth(requires: Role = ADMIN) on OBJECT | FIELD_DEFINITION
