@@ -1619,6 +1619,11 @@ graphql-extensions@0.7.6:
   dependencies:
     "@apollographql/apollo-tools" "^0.3.6"
 
+graphql-scalars@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-0.4.7.tgz#6c77b03d1d1ba32384b9ac87dcb28d1ad9044d9f"
+  integrity sha512-7/bLMxmbkxMRos6xDMkt//9vZjV8mQEoMwcKLkUMWqPo2AY/0Y+QFk2kjmf84imXfWfgV1Ji9/TTFqEFkHDCMw==
+
 graphql-subscriptions@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-1.1.0.tgz#5f2fa4233eda44cf7570526adfcf3c16937aef11"

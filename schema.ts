@@ -3,6 +3,8 @@ import { gql } from 'apollo-server';
 export const schema = gql`
   directive @auth(requires: Role = ADMIN) on OBJECT | FIELD_DEFINITION
 
+  scalar DateTime 
+
   enum Role {
     ADMIN
     REVIEWER
@@ -42,11 +44,14 @@ export const schema = gql`
 
   type Query {
     users: [User] @auth
+    workplaces: [Workplace]
+    shifts: [Shift]
   }
 
   type Mutation {
     users: UsersMutation
-    workplaces: WorlplaceMutation
+    workplaces: WorkplaceMutation
+    shifts: ShiftsMutation
   }
 
   type UsersMutation {
@@ -56,9 +61,14 @@ export const schema = gql`
     ## TODO: removeRoles(id: String!, roles: [String]): User
   }
 
-  type WorlplaceMutation {
+  type WorkplaceMutation {
     create(input: CreateWorkplaceInput): Workplace
     update(id: String!, input: UpdateWorkplaceInput): Workplace
+  }
+
+  type ShiftsMutation {
+    create(input: CreateShiftInput): Shift
+    update(id: String!, input: UpdateShiftInput): Shift
   }
 
   input UpdateUserInput {
@@ -91,5 +101,17 @@ export const schema = gql`
 
   input UpdateWorkplaceInput {
     name: String
+  }
+
+  input CreateShiftInput {
+    user: String!
+    workplace: String!
+    date: DateTime!
+  }
+
+  input UpdateShiftInput {
+    user: String
+    workplace: String
+    date: DateTime
   }
 `;

@@ -35,17 +35,18 @@ const mapUser = user => {
 };
 
 export const UsersResolver =  async (root, args, context, info) => { 
-  const { body } = await context.authApi.get('users');
+  const users = context.userManagementInterface.all();
+  // const { body } = await context.authApi.get('users');
 
-  let returnArray = [];
-  if (typeof body == 'object') {
-    const bodyArray = <Array<any>> body;
-      bodyArray.forEach(user => {
-        returnArray.push(mapUser(user));
-  });
+  // let returnArray = [];
+  // if (typeof body == 'object') {
+    // const bodyArray = <Array<any>> body;
+      // bodyArray.forEach(user => {
+        // returnArray.push(mapUser(user));
+  // });
 
-  return returnArray;
-}
+  return users;
+// }
 }
 
 export const UsersMutation = (root, args, context, info) => {

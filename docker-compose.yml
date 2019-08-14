@@ -14,5 +14,5 @@ services:
     image: clue/adminer
     restart: always
     ports:
-      - 80:80
+      - 9999:80
 
