@@ -68,7 +68,8 @@ export class UserInterface {
   async all() {
     const { body } = await this.auth0api.get('users');
 
-    let returnArray: [User];
+    let returnArray: User[];
+    returnArray = new Array<User>();
     if (typeof body == 'object') {
       const bodyArray = <Array<any>>body;
       bodyArray.forEach(user => {
