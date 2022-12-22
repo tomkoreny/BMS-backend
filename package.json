@@ -19,7 +19,7 @@
     "flashheart": "^3.2.1",
     "graphql": "^14.4.2",
     "graphql-scalars": "^0.4.7",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwks-rsa": "^1.5.1",
     "nodemon": "^1.19.1",
     "pg": "^7.11.0",
